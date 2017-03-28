@@ -1,0 +1,28 @@
+[
+  {
+  "name" : "Phil",
+  "email" : "ph-huber@gmx.de",
+  "filters" : [
+    {
+      "keyword": "socks",
+      "time": "DUMMY"
+    },
+    {
+      "keyword": "hypno",
+      "time": "DUMMY"
+    },
+    {
+      "keyword": "weed",
+      "time": "DUMMY"
+    },
+    {
+      "keyword": "gay",
+      "time": "DUMMY"
+    },
+    {
+      "keyword": "deutschland",
+      "time": "DUMMY"
+    }
+  ]
+  }
+]

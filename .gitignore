@@ -99,3 +99,10 @@ coverage.xml
 docs/_build/
 
 # End of https://www.gitignore.io/api/python,pycharm,windows
+
+### now my projects stuff hidden for privacy reasons
+search_results/
+crawler_results/
+api_key
+users.json
+mailer.py

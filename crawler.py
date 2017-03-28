@@ -22,14 +22,14 @@ import fire
 class Crawler:
     """
     this class provides an interface to the newsapi.org.
-    you can use it to get all articles or to get the last search result of this class from file.
+    you can use it to get all articles or to get the last manual_search result of this class from file.
 
     important functions:
         - _get_all_articles()
-        gets all articles and saves them into "./results". use with care!!
+        gets all articles and saves them into "./crawler_results". use with care!!
 
         - get_last_article_result()
-        returns the last result from "./results" as list.
+        returns the last result from "./crawler_results" as list.
 
         - mainloop(minutes)
         starts a mainloop with sleep in minutes between crawls. created for use with fire.
@@ -40,7 +40,7 @@ class Crawler:
         # creating paths
         self.__SEP = os.path.sep
         self.__BASE_PATH = os.path.abspath('.')
-        self.__RESULTS_PATH = self.__BASE_PATH + self.__SEP + 'results'
+        self.__RESULTS_PATH = self.__BASE_PATH + self.__SEP + 'crawler_results'
         self.__RESULTS_ID_PATH = self.__RESULTS_PATH + self.__SEP + 'id'
         self.__API_KEY_PATH = self.__BASE_PATH + self.__SEP + 'api_key'
         # get API key from file
@@ -73,8 +73,8 @@ class Crawler:
     def _get_all_articles(self):
         """ makes an api-call and gets all articles from all sources.
 
-        the result is saved at ./results/ID_result.json.
-        the id is received from ./results/id via internal function. the function ensures, that no redundant ids are
+        the result is saved at ./crawler_results/ID_result.json.
+        the id is received from ./crawler_results/id via internal function. the function ensures, that no redundant ids are
         present.
 
         PLEASE USE WITH CARE!!
@@ -109,7 +109,7 @@ class Crawler:
         please use this instead of "__get_all_articles()" if you don't explicitly need up-to-date-data.
         the file to use is the current id - 1.
 
-        :return: last article search result as list
+        :return: last article manual_search result as list
         """
         m_id = self.__secret_get_last_results_id()
         filename = m_id + '_result.json'
@@ -133,9 +133,9 @@ class Crawler:
         return str(m_id)
 
     def __get_results_id(self):
-        """ returns the file id for a search result to use.
+        """ returns the file id for a manual_search result to use.
 
-        this function opens ./res/id and returns the id in there. to prevent redundant ids, this function will also
+        this function opens ./crawler_results/id and returns the id in there. to prevent redundant ids, this function will also
         increase the id by one and write it to the file.
 
         :return: id for result filename to be used.
